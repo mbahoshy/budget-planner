@@ -1,5 +1,6 @@
-.App {
-  text-align: center;
+.app {
+  /* text-align: center; */
+  font-family: 'Roboto', sans-serif;
 }
 
 .App-logo {
@@ -13,9 +14,13 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App-link {
+  color: #61dafb;
+}
+
+.app-header {
+  background-color: #56689d;
+  height: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,9 +29,17 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.app-drawer {
+  background-color: #f9f9f9;
+  /* background-color: #2e2d29; */
+  height: calc(100vh - 80px)
 }
+
+/* .app-resize {
+  background-color: blue;
+  height: calc(100vh - 100px);
+  cursor: ew-resize;
+} */
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +48,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.grabbable {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+/* (Optional) Apply a "closed-hand" cursor during drag operation. */
+.grabbable:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
