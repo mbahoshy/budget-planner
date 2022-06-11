@@ -19,6 +19,10 @@ const BudgetTypeRows = ({
 
   const { length: numItems } = typeItems || [];
 
+  const [open, setOpen] = useState(true);
+
+  const toggleOpen = () => setOpen(!open);
+
   return (
     <tbody>
       <tr
@@ -28,6 +32,7 @@ const BudgetTypeRows = ({
         }}
       >
         <td
+          onClick={toggleOpen}
           style={{
             color: 'white',
             fontWeight: 'bold',
@@ -53,7 +58,7 @@ const BudgetTypeRows = ({
         })}
         {/* <td colSpan="12"></td> */}
       </tr>
-      {typeItems.map((item, i) => {
+      {open && typeItems.map((item, i) => {
         const itemEntries = (entries || []).filter(({ itemId }) => itemId === item._id)
         return (
           <BudgetRow
@@ -68,14 +73,16 @@ const BudgetTypeRows = ({
           />
         )
       })}
-      <BudgetRow
-        months={months}
-        i={numItems}
-        type={typeId}
-        budgetId={budgetId}
-        secondaryColor={secondaryColor}
-        clearOnBlur
-      />
+      {open && (
+        <BudgetRow
+          months={months}
+          i={numItems}
+          type={typeId}
+          budgetId={budgetId}
+          secondaryColor={secondaryColor}
+          clearOnBlur
+        />
+      )}
       <tr style={{ height: '30px' }}></tr>
     </tbody>
   )
